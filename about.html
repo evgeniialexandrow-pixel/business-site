@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне — Евгений Александров | Бизнес-эксперт и человек</title>
+    <style>
+        :root {
+            --primary-color: #0F172A;
+            --accent-color: #2563EB;
+            --accent-hover: #1D4ED8;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Page Title */
+        .page-header {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .img-placeholder {
+            background-color: #CBD5E1;
+            height: 450px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 500;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        p {
+            margin-bottom: 18px;
+            color: #334155;
+            font-size: 16px;
+        }
+
+        .quote-block {
+            background-color: var(--bg-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Family / Hobbies Cards */
+        .family-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .profile-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        .profile-card h3 {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .profile-card .subtitle {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 13px;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        footer a {
+            color: #94A3B8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .family-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Евгений<span>Александров</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html" class="active">Обо мне</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Узнайте меня ближе</h1>
+            <p>История экспертности, жизненная философия и ценности, которые определяют результат</p>
+        </div>
+    </div>
+
+    <!-- Section: Business Identity -->
+    <section class="section">
+        <div class="container grid-2">
+            <div class="about-text">
+                <h2>Мой профессиональный фокус</h2>
+                <p>В бизнесе я не верю в случайности или «везение». Моя специализация — это создание абсолютно прозрачных, математически выверенных и устойчивых систем там, где другие видят непреодолимый хаос бюрократии и рисков.</p>
+                <p>Я помогаю российским предприятиям масштабироваться через три ключевых направления[cite: 2]:</p>
+                <p><strong>1. Полное сопровождение тендеров:</strong> Экспертная работа в правовом поле 44-ФЗ, 223-ФЗ и крупных коммерческих закупок[cite: 2]. От поиска маржинальных ниш до безупречного подписания контракта.</p>
+                <p><strong>2. Финансовый консалтинг:</strong> Привлечение банковских гарантий любой сложности (на обеспечение заявок, исполнение договоров и гарантийных обязательств), а также быстрое одобрение финансирования под закупку оборудования и пополнение оборотных средств предприятия[cite: 2].</p>
+                <p><strong>3. ВЭД и поставки из Китая «под ключ»:</strong> Профессиональный поиск фабрик, верификация поставщиков, карго-доставка, таможенное оформление и белая логистика в любую точку РФ[cite: 2].</p>
+            </div>
+            <div class="img-placeholder">
+                [ Ваше деловое портретное фото ]
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Personal Story & Philosophy -->
+    <section class="section" style="background-color: var(--bg-light);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2>Системность как глубокий жизненный выбор</h2>
+                <p>Мой подход к жесткому менеджменту, вниманию к деталям и бескомпромиссной защите интересов клиентов сформировался не на бизнес-тренингах. Его выковала моя личная жизнь[cite: 2].</p>
+                
+                <p>Мы с женой воспитываем нашу прекрасную дочь Алису, ей скоро исполнится 6 лет[cite: 2]. У Алисы РАС (расстройство аутистического спектра)[cite: 2]. Она пока не разговаривает, но обладает удивительным, чутким внутренним миром[cite: 2]. Алиса обожает простые и искренние вещи: кататься на качелях, лакомиться чупа-чупсами, ездить с нами в машине или на трамвае, завороженно наблюдая через окно за сменяющимися городскими пейзажами[cite: 2].</p>
+                
+                <div class="quote-block">
+                    «Диагноз дочери научил меня главному правилу: не существует безвыходных ситуаций, если ты действуешь хладнокровно, системно и последовательно. Когда опускаются руки, спасает четкий план.»[cite: 2]
+                </div>
+
+                <p>Каждая наша неделя — это строгий график и дисциплина. Мы занимаемся с Алисой 6 раз в неделю, комбинируя лучшие мировые методики: АВА-терапию, нейрогимнастику, сенсорную интеграцию Floortime, арт-терапию и специальную физическую систему «Маугли»[cite: 2]. Это огромный труд, который требует колоссальной концентрации внимания и воли[cite: 2].</p>
+                <p>Этот же уровень личной ответственности, системного контроля и преданности делу я автоматически переношу на бизнес каждого своего клиента[cite: 2]. Если я берусь за ваш тендер, банковскую гарантию или контракт с Китаем — я веду его с той же бескомпромиссной точностью, с которой привык бороться за будущее своей семьи[cite: 2].</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: My Family & Inspiration -->
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 10px;">Мое окружение и тыл</h2>
+            <p style="text-align: center; color: var(--text-light); max-width: 600px; margin: 0 auto 50px auto;">Люди, которые меня вдохновляют, развивают мир вокруг себя и дают энергию двигаться вперед.</p>
+            
+            <div class="family-grid">
+                <!-- Card 1: Natalia -->
+                <div class="profile-card">
+                    <h3>Наталья Александрова</h3>
+                    <div class="subtitle">Супруга, Творец, Эксперт по здоровью</div>
+                    <p>Моя жена Наталья — удивительное сочетание глубокого искусства и точной восточной философии[cite: 2]. Она творческий человек с тонким вкусом: профессионально создает авторские украшения из натуральных камней, пишет сценарии, занимается режиссурой и актерским мастерством[cite: 2].</p>
+                    <p>Недавно Наталья открыла в Перми сертифицированный кабинет китайской традиционной медицины <strong>Fohow (Фохоу)</strong>[cite: 2]. Используя передовые методики биоэнергорегуляции и массажа, она помогает людям восстанавливать баланс внутренней энергии, снимать телесные блоки и возвращать здоровье на клеточном уровне[cite: 2].</p>
+                    <div class="tag-list">
+                        <span class="tag">Кабинет Fohow Пермь</span>
+                        <span class="tag">Дизайн украшений</span>
+                        <span class="tag">Режиссура & Сценарии</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Alisa -->
+                <div class="profile-card">
+                    <h3>Алиса</h3>
+                    <div class="subtitle">Наша дочь, Главный учитель жизни</div>
+                    <p>Алисе скоро 6 лет[cite: 2]. Каждый ее маленький шаг вперед и новая победа на занятиях — это наша главная семейная гордость[cite: 2]. Она учит нас радоваться моменту, замечать красоту в простых вещах и никогда, ни при каких обстоятельствах не сдаваться[cite: 2].</p>
+                    <p>Ее упорство на ежедневных развивающих тренировках — пример истинной стойкости, который ежедневно заряжает меня на решение сложнейших бизнес-задач для моих партнеров[cite: 2].</p>
+                    <div class="tag-list">
+                        <span class="tag">6 лет</span>
+                        <span class="tag">АВА-терапия</span>
+                        <span class="tag">Нейрогимнастика</span>
+                        <span class="tag">Система Маугли</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Евгений Александров. Все права защищены. Пермь и вся Россия.</p>
+            <p style="margin-top: 10px; font-size: 13px;"><a href="index.html">Вернуться на главную страницу</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

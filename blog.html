@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог — Евгений Александров | Мысли, Кейсы, Жизнь</title>
+    <style>
+        :root {
+            --primary-color: #0F172A;
+            --accent-color: #2563EB;
+            --accent-hover: #1D4ED8;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --border-color: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 0;
+            background-color: var(--bg-light);
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        /* Blog Filters */
+        .blog-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            border: 1px solid var(--border-color);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding-bottom: 80px;
+        }
+
+        .post-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .post-img-stub {
+            background-color: #E2E8F0;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .post-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .post-tag {
+            color: var(--accent-color);
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        .post-body h2 {
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .post-body p {
+            color: #475569;
+            font-size: 15px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .post-meta {
+            font-size: 13px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        /* Newsletter Box */
+        .newsletter {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .newsletter h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .newsletter p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #94A3B8;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">Евгений<span>Александров</span></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">Обо мне</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="blog.html" class="active">Блог</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Заметки эксперта: Бизнес и Жизнь</h1>
+            <p>Практический опыт в тендерах, разборы логистики КНР и личные истории о дисциплине, семье и фокусе.</p>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="container">
+        
+        <!-- Navigation / Filters -->
+        <div class="blog-nav">
+            <button class="filter-btn active" onclick="filterCategory('all')">Все статьи</button>
+            <button class="filter-btn" onclick="filterCategory('tenders')">Госзакупки</button>
+            <button class="filter-btn" onclick="filterCategory('china')">Бизнес с Китаем</button>
+            <button class="filter-btn" onclick="filterCategory('personal')">Личное и семья</button>
+        </div>
+
+        <!-- Grid of Posts -->
+        <div class="blog-grid" id="blogGrid">
+            
+            <!-- Post 1: Tenders -->
+            <div class="post-card" data-category="tenders">
+                <div class="post-img-stub">[ Иллюстрация: Анализ документов ]</div>
+                <div class="post-body">
+                    <div class="post-tag">Госзакупки</div>
+                    <h2>Ловушки в техзаданиях по 223-ФЗ: как защитить заявку от необоснованного отклонения</h2>
+                    <p>Разбираем реальный кейс из практики. На какие неочевидные формулировки заказчика в ТЗ нужно обращать внимание еще на этапе аналитики, и как правильно составить запрос на разъяснение положений документации.</p>
+                    <div class="post-meta">Время чтения: 7 мин • Практический разбор</div>
+                </div>
+            </div>
+
+            <!-- Post 2: China -->
+            <div class="post-card" data-category="china">
+                <div class="post-img-stub">[ Иллюстрация: Импорт и логистика ]</div>
+                <div class="post-body">
+                    <div class="post-tag">Бизнес с Китаем</div>
+                    <h2>Белая доставка против Карго при импорте оборудования из КНР</h2>
+                    <p>Честный разбор рисков. Почему в b2b-сегменте экономия на "серых" схемах карго-доставки часто оборачивается арестом партии на таможне, и как рассчитать реальную себестоимость официального белого импорта с ГТД.</p>
+                    <div class="post-meta">Время чтения: 10 мин • Руководство</div>
+                </div>
+            </div>
+
+            <!-- Post 3: Personal -->
+            <div class="post-card" data-category="personal">
+                <div class="post-img-stub">[ Личное фото из семейного архива ]</div>
+                <div class="post-body">
+                    <div class="post-tag">Личное и семья</div>
+                    <h2>Чему меня научили 6 тренировок в неделю, и как это помогает в жестком бизнесе</h2>
+                    <p>Искренний пост о нашей дочери Алисе и системной реабилитации. Как ежедневное планирование занятий по АВА-терапии и нейрогимнастике развивает внутреннюю стойкость, которая позволяет спокойно и эффективно закрывать сложнейшие переговоры.</p>
+                    <div class="post-meta">Время чтения: 5 мин • Философия жизни</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Subscription -->
+        <div class="newsletter">
+            <h3>Оставайтесь на связи</h3>
+            <p>Раз в две недели я отправляю личную подборку лучших аналитических материалов и кейсов без спама.</p>
+            <span style="color: var(--accent-color); font-weight: 600; font-size: 14px;">[ Здесь будет форма подписки или ссылка на Ваш Telegram-канал ]</span>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Евгений Александров. Все права защищены. Пермь и вся Россия.</p>
+            <p style="margin-top: 10px; font-size: 13px;"><a href="index.html">Вернуться на главную страницу</a></p>
+        </div>
+    </footer>
+
+    <!-- Interactive Filtering Script -->
+    <script>
+        function filterCategory(category) {
+            // Update active button style
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter cards
+            const cards = document.querySelectorAll('.post-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
