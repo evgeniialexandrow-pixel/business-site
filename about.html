@@ -332,6 +332,14 @@
             <p style="margin-top: 10px; font-size: 13px;"><a href="index.html">Вернуться на главную страницу</a></p>
         </div>
     </footer>
-
+<script>
+    // Предзагрузка страниц в кэш браузера для мгновенного перехода
+    ['index.html', 'about.html', 'services.html', 'blog.html', 'contacts.html'].forEach(page => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = page;
+        document.head.appendChild(link);
+    });
+</script>
 </body>
 </html>
