@@ -244,6 +244,14 @@
             <p>© 2026 Евгений Александров. Все права защищены. Пермь и вся Россия.</p>
         </div>
     </footer>
-
+<script>
+    // Предзагрузка страниц в кэш браузера для мгновенного перехода
+    ['index.html', 'about.html', 'services.html', 'blog.html', 'contacts.html'].forEach(page => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = page;
+        document.head.appendChild(link);
+    });
+</script>
 </body>
 </html>
