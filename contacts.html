@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -196,18 +196,13 @@
             font-size: 16px;
             cursor: pointer;
             width: 100%;
+            text-align: center;
+            text-decoration: none;
             transition: background-color 0.2s ease;
         }
 
         .btn:hover {
             background-color: var(--accent-hover);
-        }
-
-        #form-result {
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 15px;
-            text-align: center;
         }
 
         /* Footer */
@@ -251,7 +246,7 @@
             <h1>Давайте обсудим ваш проект</h1>
             <p>Я всегда открыт для сложных задач, масштабных тендеров и выстраивания прозрачной логистики.</p>
         </div>
-    </div>
+    </header>
 
     <!-- Contact Content -->
     <section class="container contact-section">
@@ -263,7 +258,7 @@
                 
                 <div class="info-item">
                     <h3>Основная локация</h3>
-                    <p>г. Пермь, работа с проектами по всей России[cite: 2]</p>
+                    <p>г. Пермь, работа с проектами по всей России</p>
                 </div>
 
                 <div class="info-item">
@@ -282,15 +277,18 @@
                 </div>
             </div>
 
-            <!-- Column 2: Умная форма для GitHub Pages -->
+            <!-- Column 2: Прямая надежная форма для GitHub Pages -->
             <div class="contact-form">
                 <h2>Отправить запрос</h2>
                 
-                <form id="ajax-form" method="POST">
-                    <!-- Ваш персональный ключ Web3Forms, привязанный к evgenii.alexandrow@gmail.com -->
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Персональный ключ Web3Forms, привязанный к evgenii.alexandrow@gmail.com -->
                     <input type="hidden" name="access_key" value="cc86bcf1-0679-4d6d-bca2-8db4811b7d8b">
                     <input type="hidden" name="from_name" value="Сайт-визитка Лендинг">
                     <input type="hidden" name="subject" value="Новая заявка от клиента">
+                    
+                    <!-- Возврат обратно на страницу контактов после успешной отправки -->
+                    <input type="hidden" name="redirect" value="https://evgeniialexandrow-pixel.github.io/business-site/contacts.html">
 
                     <div class="form-group">
                         <label for="name">Ваше имя / Компания</label>
@@ -307,10 +305,8 @@
                         <textarea id="message" name="message" rows="5" required placeholder="Опишите кратко сферу (Тендеры, Банковские гарантии, Импорт КНР) и ваш запрос..."></textarea>
                     </div>
 
-                    <button type="submit" class="btn" id="submit-btn">Отправить сообщение</button>
-                    <div id="form-result"></div>
+                    <button type="submit" class="btn">Отправить сообщение</button>
                 </form>
-
             </div>
 
         </div>
@@ -323,65 +319,14 @@
         </div>
     </footer>
 
-    <!-- Безопасный скрипт отправки без перезагрузки страницы -->
+    <!-- Предзагрузка страниц в кэш браузера для мгновенного перехода -->
     <script>
-        const form = document.getElementById('ajax-form');
-        const result = document.getElementById('form-result');
-        const btn = document.getElementById('submit-btn');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = "Отправка...";
-            result.style.color = "var(--text-dark)";
-            result.innerText = "Пожалуйста, подождите...";
-
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let res = await response.json();
-                if (response.status == 200) {
-                    result.style.color = "green";
-                    result.innerText = "Сообщение успешно отправлено! Я свяжусь с вами в ближайшее время.";
-                    form.reset();
-                } else {
-                    console.log(response);
-                    result.style.color = "red";
-                    result.innerText = res.message;
-                }
-            })
-            .catch(error => {
-                console.log(error);
-                result.style.color = "red";
-                result.innerText = "Что-то пошло не так. Попробуйте позже.";
-            })
-            .then(function() {
-                btn.disabled = false;
-                btn.innerText = "Отправить сообщение";
-                setTimeout(() => {
-                    result.innerText = "";
-                }, 6000);
-            });
+        ['index.html', 'about.html', 'services.html', 'blog.html', 'contacts.html'].forEach(page => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = page;
+            document.head.appendChild(link);
         });
     </script>
-<script>
-    // Предзагрузка страниц в кэш браузера для мгновенного перехода
-    ['index.html', 'about.html', 'services.html', 'blog.html', 'contacts.html'].forEach(page => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = page;
-        document.head.appendChild(link);
-    });
-</script>
 </body>
 </html>
