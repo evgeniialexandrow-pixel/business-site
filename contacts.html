@@ -224,6 +224,7 @@
 </head>
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">Евгений<span>Александров</span></a>
@@ -239,6 +240,7 @@
         </div>
     </header>
 
+    <!-- Page Header -->
     <div class="page-header">
         <div class="container">
             <h1>Давайте обсудим ваш проект</h1>
@@ -246,9 +248,11 @@
         </div>
     </div>
 
+    <!-- Contact Content -->
     <section class="container contact-section">
         <div class="grid-2">
             
+            <!-- Column 1: Info -->
             <div class="info-block">
                 <h2>Прямые контакты</h2>
                 
@@ -273,10 +277,14 @@
                 </div>
             </div>
 
+            <!-- Column 2: Прямая надежная форма через FormSubmit -->
             <div class="contact-form">
                 <h2>Отправить запрос</h2>
                 
-                <form action="https://formspree.io/f/xanygzel" method="POST">
+                <form action="https://formsubmit.co/evgenii.alexandrow@gmail.com" method="POST">
+                    <!-- Скрытые параметры для оптимизации -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://evgeniialexandrow-pixel.github.io/business-site/contacts.html">
                     <input type="hidden" name="_subject" value="Новая заявка с сайта-визитки">
 
                     <div class="form-group">
@@ -286,7 +294,7 @@
                     
                     <div class="form-group">
                         <label for="email">Email для связи</label>
-                        <input type="email" id="email" name="_replyto" required placeholder="name@example.com">
+                        <input type="email" id="email" name="email" required placeholder="name@example.com">
                     </div>
 
                     <div class="form-group">
@@ -301,6 +309,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>© 2026 Евгений Александров. Все права защищены. Пермь и вся Россия.</p>
