@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Экспертные услуги и консалтинг — Евгений Александров</title>
+    <title>Услуги — Евгений Александров | Экспертные B2B решения</title>
     <style>
         :root {
             --primary-color: #0F172A;
@@ -101,121 +101,110 @@
             margin: 0 auto;
         }
 
-        /* Services Grid/List */
+        /* Services Section */
         .services-section {
             padding: 80px 0;
         }
 
-        .service-block {
-            margin-bottom: 60px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .service-block:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .service-meta {
-            display: flex;
+        .service-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
-            gap: 15px;
+            margin-bottom: 80px;
+        }
+
+        .service-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-card:nth-child(even) .service-text {
+            direction: ltr;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 380px;
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-text h2 {
+            font-size: 28px;
+            color: var(--primary-color);
             margin-bottom: 15px;
         }
 
-        .service-badge {
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--accent-color);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .service-block h2 {
-            font-size: 26px;
-            color: var(--primary-color);
+        .service-text p {
+            color: var(--text-light);
             margin-bottom: 20px;
+            font-size: 16px;
         }
 
-        .service-content {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
+        .feature-list {
+            list-style: none;
+            margin-bottom: 25px;
         }
 
-        .service-details h3 {
-            font-size: 18px;
-            color: var(--primary-color);
-            margin: 20px 0 10px 0;
-        }
-
-        .service-details ul {
-            list-style-type: none;
-            padding-left: 0;
-            margin-bottom: 20px;
-        }
-
-        .service-details ul li {
+        .feature-list li {
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 8px;
-            color: #334155;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 15px;
         }
 
-        .service-details ul li::before {
+        .feature-list li::before {
             content: "✓";
             position: absolute;
             left: 0;
             color: var(--accent-color);
-            font-weight: bold;
+            font-weight: 700;
         }
 
-        .blog-link-box {
+        /* CTA Section */
+        .cta-section {
             background-color: var(--bg-light);
-            border-radius: 8px;
-            padding: 20px;
-            border: 1px dashed var(--border-color);
-            margin-top: 25px;
-        }
-
-        .blog-link-box a {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .blog-link-box a:hover {
-            text-decoration: underline;
-        }
-
-        .consulting-types {
-            background-color: var(--primary-color);
-            color: white;
             padding: 60px 0;
-            border-radius: 16px;
-            margin-top: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
         }
 
-        .consulting-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            padding: 0 40px;
-        }
-
-        .consulting-card h3 {
-            color: var(--accent-color);
-            font-size: 20px;
+        .cta-section h3 {
+            font-size: 24px;
+            color: var(--primary-color);
             margin-bottom: 15px;
         }
 
-        .consulting-card p {
-            color: #94A3B8;
-            font-size: 15px;
+        .cta-section p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
         }
 
         /* Footer */
@@ -225,20 +214,16 @@
             padding: 40px 0;
             text-align: center;
             font-size: 14px;
-            margin-top: 80px;
         }
 
-        footer a {
-            color: #94A3B8;
-            text-decoration: none;
-        }
-
-        @media (max-width: 868px) {
-            .service-content, .consulting-grid {
+        @media (max-width: 768px) {
+            .service-card, .service-card:nth-child(even) {
                 grid-template-columns: 1fr;
+                gap: 30px;
+                direction: ltr;
             }
-            .consulting-grid {
-                padding: 0 20px;
+            .service-img {
+                height: 250px;
             }
         }
     </style>
@@ -264,137 +249,88 @@
     <!-- Page Header -->
     <div class="page-header">
         <div class="container">
-            <h1>Экспертные решения и консалтинг</h1>
-            <p>Практическая помощь в масштабировании бизнеса, управлении закупками, привлечении капитала и выстраивании стабильной международной логистики.</p>
+            <h1>Экспертные B2B решения</h1>
+            <p>Математически выверенный подход к тендерным процессам, финансовым инструментам и международной логистике.</p>
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Services Content -->
     <section class="container services-section">
         
-        <!-- Block 1: Тендеры -->
-        <div class="service-block">
-            <div class="service-meta">
-                <span class="service-badge">Госзакупки</span>
-                <span style="color: var(--text-light); font-size: 14px;">44-ФЗ, 223-ФЗ, Коммерческие торги</span>
+        <!-- Service 1 -->
+        <div class="service-card">
+            <div class="service-img">
+                <!-- Сюда вставляем репортажное ИИ-фото №1 (Пропорции 16:9) -->
+                <img src="images/service-tenders.webp" alt="Комплексное сопровождение тендеров">
             </div>
-            <h2>Комплексное сопровождение и аудит закупочной деятельности</h2>
-            <div class="service-content">
-                <div class="service-details">
-                    <p>Выход на рынок государственных и коммерческих закупок — это один из самых быстрых способов обеспечить предприятие стабильным объемом заказов. Однако здесь критически важна точность: любая юридическая помарка в документах ведет к отклонению заявки или, что хуже, к риску попасть в Реестр недобросовестных поставщиков (РНП).</p>
-                    <p>Я подхожу к процессу как архитектор систем: мы не просто "подаем заявки", мы анализируем конкурентную среду, просчитываем экономическую рентабельность и минимизируем риски на каждом этапе тендерного цикла.</p>
-                    
-                    <h3>Чем я могу быть полезен вашей компании:</h3>
-                    <ul>
-                        <li>Глубокий предтендерный аудит документации и оценка технических рисков закупки.</li>
-                        <li>Разработка и безупречная подготовка первых и вторых частей заявок для электронных процедур любой сложности.</li>
-                        <li>Защита интересов вашей организации в Федеральной антимонопольной службе (ФАС) в случае неправомерных действий заказчика.</li>
-                    </ul>
-
-                    <div class="blog-link-box">
-                        💡 <strong>Полезно для изучения:</strong> <a href="blog.html">В своем Блоге я подробно разбираю скрытые ловушки заказчиков в техзаданиях 223-ФЗ. Читать статьи →</a>
-                    </div>
-                </div>
-                <div style="background-color: #E2E8F0; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; color: var(--text-light);">
-                    [ Инфографика: Этапы тендерного сопровождения ]
-                </div>
+            <div class="service-text">
+                <h2>Комплексное сопровождение тендеров</h2>
+                <p>Полное управление циклом закупок в рамках 44-ФЗ, 223-ФЗ и коммерческих торгов. Я беру на себя жесткий контроль рисков, отсекая юридические и технические ловушки заказчиков ещё на этапе анализа документации.</p>
+                <ul class="feature-list">
+                    <li>Глубокий аудит ТЗ, положений о закупках и проектной документации</li>
+                    <li>Подбор точных кодов ОКПД2 / КТРУ и детальная проработка технических заданий</li>
+                    <li>Подготовка и подача безупречных заявок на любых федеральных и коммерческих ЭТП</li>
+                    <li>Защита интересов и обжалование неправомерных действий в ФАС</li>
+                </ul>
+                <a href="contacts.html" class="btn">Заказать аудит закупки</a>
             </div>
         </div>
 
-        <!-- Block 2: Финансирование -->
-        <div class="service-block">
-            <div class="service-meta">
-                <span class="service-badge">Финансы</span>
-                <span style="color: var(--text-light); font-size: 14px;">Капитал под госконтракты</span>
+        <!-- Service 2 -->
+        <div class="service-card">
+            <div class="service-img">
+                <!-- Сюда вставляем репортажное ИИ-фото №2 (Пропорции 16:9, поза или ракурс изменены) -->
+                <img src="images/service-finance.webp" alt="Бизнес-финансирование и Банковские гарантии">
             </div>
-            <h2>Привлечение финансирования и банковских гарантий</h2>
-            <div class="service-content">
-                <div class="service-details">
-                    <p>Победа в крупном тендере — это лишь половина дела. Настоящий вызов для предпринимателя заключается в обеспечении обязательств и поиске ресурсов для исполнения договора, особенно когда оборотные средства заморожены в текущих проектах.</p>
-                    <p>Я помогаю выстраивать эффективный диалог с ведущими финансовыми институтами для оперативного привлечения капитала на максимально выгодных условиях, без навязанных страховок и скрытых комиссий.</p>
-                    
-                    <h3>Направления финансовой поддержки:</h3>
-                    <ul>
-                        <li><strong>Банковские гарантии:</strong> Выпуск в кратчайшие сроки для обеспечения заявок, надлежащего исполнения контрактов и закрытия гарантийных обязательств.</li>
-                        <li><strong>Целевое финансирование:</strong> Привлечение кредитных линий и займов на закупку сырья, материалов и оборудования непосредственно под рамки выигранного госконтракта.</li>
-                        <li><strong>Оборотный капитал:</strong> Помощь в получении классических бизнес-кредитов для расширения и финансового оздоровления предприятия.</li>
-                    </ul>
-
-                    <div class="blog-link-box">
-                        💡 <strong>Полезно для изучения:</strong> <a href="blog.html">Как получить банковскую гарантию без отказа, если у компании нулевой баланс? Читать кейс в Блоге →</a>
-                    </div>
-                </div>
-                <div style="background-color: #E2E8F0; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; color: var(--text-light);">
-                    [ Инфографика: Схема одобрения кредитных линий ]
-                </div>
+            <div class="service-text">
+                <h2>Финансирование и Банковские гарантии</h2>
+                <p>Обеспечение финансовой устойчивости контрактов без изъятия оборотных средств из бизнеса. Прямое взаимодействие с банками-партнерами позволяет оперативно решать задачи любой сложности.</p>
+                <ul class="feature-list">
+                    <li>Выпуск банковских гарантий (БГ) под обеспечение заявок и исполнение обязательств</li>
+                    <li>Помощь в одобрении БГ для нестандартных контрактов и сложных объектов</li>
+                    <li>Привлечение тендерных займов и предконтрактного финансирования</li>
+                    <li>Экспресс-анализ финансового состояния компании перед подачей на кредитные лимиты</li>
+                </ul>
+                <a href="contacts.html" class="btn">Рассчитать лимит БГ</a>
             </div>
         </div>
 
-        <!-- Block 3: Китай -->
-        <div class="service-block">
-            <div class="service-meta">
-                <span class="service-badge">ВЭД и Импорт</span>
-                <span style="color: var(--text-light); font-size: 14px;">Поставки из КНР под ключ</span>
+        <!-- Service 3 -->
+        <div class="service-card">
+            <div class="service-img">
+                <!-- Сюда вставляем репортажное ИИ-фото №3 (Пропорции 16:9, например, работа со схемами поставок) -->
+                <img src="images/service-ved.webp" alt="ВЭД и Белая логистика из Китая">
             </div>
-            <h2>Организация бизнеса и поставок оборудования из Китая</h2>
-            <div class="service-content">
-                <div class="service-details">
-                    <p>Перенос производственных цепочек и закупка сложного технического оборудования в Китае — главный тренд модернизации российского бизнеса. Но работа с КНР полна скрытых барьеров: языковой барьер, риск наткнуться на недобросовестного перекупщика вместо фабрики, сложности с международными платежами и жесткие требования таможенного контроля РФ.</p>
-                    <p>Моя задача — сделать ваш импорт таким же простым и понятным, как покупка товара в соседнем магазине. Я помогаю организовать процесс полностью в правовом поле, оптимизируя логистические издержки.</p>
-                    
-                    <h3>Что входит в консалтинг по ВЭД:</h3>
-                    <ul>
-                        <li>Профессиональный поиск верифицированных фабрик-производителей под ваши технические параметры (ТЗ).</li>
-                        <li>Организация независимой инспекции качества продукции и контроля отгрузки партии непосредственно в Китае.</li>
-                        <li>Разработка оптимальных логистических маршрутов (белая доставка, таможенная очистка, декларирование, сертификация товаров для РФ).</li>
-                    </ul>
-
-                    <div class="blog-link-box">
-                        💡 <strong>Полезно для изучения:</strong> <a href="blog.html">Белая доставка vs Карго: как не потерять партию товара на таможне. Читать в Блоге →</a>
-                    </div>
-                </div>
-                <div style="background-color: #E2E8F0; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; color: var(--text-light);">
-                    [ Картографика логистических маршрутов КНР-РФ ]
-                </div>
+            <div class="service-text">
+                <h2>ВЭД и «Белая» логистика (КНР)</h2>
+                <p>Построение прозрачных, легальных каналов поставок промышленной химии, оборудования и компонентов из Китая. Никакого «карго» — только официальное таможенное оформление и защита от КТС.</p>
+                <ul class="feature-list">
+                    <li>Прямой поиск, верификация фабрик и инспекция производств в Китае</li>
+                    <li>Полное документальное сопровождение импорта и расчет точной себестоимости</li>
+                    <li>Организация сертификации, декларирования (ЕАС) и прохождения лабораторий</li>
+                    <li>Контроль логистической цепочки от склада отправителя до вашего объекта в РФ</li>
+                </ul>
+                <a href="contacts.html" class="btn">Рассчитать поставку</a>
             </div>
         </div>
 
-        <!-- Консультационный формат обучения -->
-        <div class="consulting-types">
-            <h2 style="text-align: center; color: white; margin-bottom: 40px;">Форматы взаимодействия</h2>
-            <div class="consulting-grid">
-                <div class="consulting-card">
-                    <h3>01. Индивидуальный консалтинг</h3>
-                    <p>Глубокий разбор конкретной бизнес-задачи вашей компании. Анализируем текущие показатели, находим слабые места в закупках или логистике и строим пошаговую карту решения.</p>
-                </div>
-                <div class="consulting-card">
-                    <h3>02. Комплексный аудит</h3>
-                    <p>Полное погружение в бизнес-процессы предприятия. Оптимизируем отдел тендерных продаж, перестраиваем логистику ВЭД, открываем постоянные лимиты в банках-партнерах.</p>
-                </div>
-                <div class="consulting-card">
-                    <h3>03. Наставничество и Блог</h3>
-                    <p>Передача личного опыта и знаний. Читайте открытые материалы в моем Блоге, внедряйте проверенные инструменты самостоятельно или привлекайте меня в качестве внешнего советника.</p>
-                </div>
-            </div>
-        </div>
+    </section>
 
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Нужен детальный разбор вашей задачи?</h3>
+            <p>Отправьте техническое задание, ссылку на закупку или описание требуемого груза. Я проведу первичный анализ рисков и предложу оптимальное решение.</p>
+            <a href="contacts.html" class="btn" style="background-color: var(--primary-color);">Связаться со мной напрямую</a>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
             <p>© 2026 Евгений Александров. Все права защищены. Пермь и вся Россия.</p>
-            <p style="margin-top: 10px; font-size: 13px;"><a href="index.html">Вернуться на главную страницу</a></p>
         </div>
     </footer>
-<script>
-    // Предзагрузка страниц в кэш браузера для мгновенного перехода
-    ['index.html', 'about.html', 'services.html', 'blog.html', 'contacts.html'].forEach(page => {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = page;
-        document.head.appendChild(link);
-    });
-</script>
+
 </body>
 </html>
